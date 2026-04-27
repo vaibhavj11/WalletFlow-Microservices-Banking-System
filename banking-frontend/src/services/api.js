@@ -18,22 +18,33 @@ client.interceptors.request.use((config) => {
 
 export const api = {
   // Auth
-  login: (data) => axios.post(`${BASE_URL}/auth/login`, data).then(r => r.data),
-  register: (data) => axios.post(`${BASE_URL}/api/users`, data).then(r => r.data),
+  login: (data) =>
+    axios.post(`${BASE_URL}/auth/login`, data).then(r => r.data),
+
+  register: (data) =>
+    axios.post(`${BASE_URL}/api/users`, data).then(r => r.data),
 
   // Wallet
-  createWallet: (userId) => client.post(`/api/wallet/create/${userId}`).then(r => r.data),
-  getBalance: (userId) => client.get(`/api/wallet/balance/${userId}`).then(r => r.data),
-  deposit: (userId, amount) => client.post(`/api/wallet/deposit?userId=${userId}&amount=${amount}`).then(r => r.data),
-  transfer: (fromUserId, toUserId, amount) => client.post(`/api/wallet/transfer?fromUserId=${fromUserId}&toUserId=${toUserId}&amount=${amount}`).then(r => r.data),
+  createWallet: (userId) =>
+    client.post(`/api/wallet/create/${userId}`).then(r => r.data),
+
+  getBalance: (userId) =>
+    client.get(`/api/wallet/balance/${userId}`).then(r => r.data),
+
+  deposit: (userId, amount) =>
+    client.post(`/api/wallet/deposit?userId=${userId}&amount=${amount}`).then(r => r.data),
+
+  transfer: (fromUserId, toUserId, amount) =>
+    client.post(`/api/wallet/transfer?fromUserId=${fromUserId}&toUserId=${toUserId}&amount=${amount}`).then(r => r.data),
 
   // Transactions
-  getTransactions: (userId) => client.get(`/api/transactions/user/${userId}`).then(r => r.data),
+  getTransactions: (userId) =>
+    client.get(`/api/transactions/user/${userId}`).then(r => r.data),
 
   // Users
-  getUser: (id) => client.get(`/api/users/${id}`).then(r => r.data),
+  getUser: (id) =>
+    client.get(`/api/users/${id}`).then(r => r.data),
+
+  getUserByUsername: (username) =>
+    client.get(`/api/users/username/${username}`).then(r => r.data),
 };
-
-
-getUserByUsername: (username) =>
-  client.get(`/api/users/username/${username}`).then(r => r.data)
